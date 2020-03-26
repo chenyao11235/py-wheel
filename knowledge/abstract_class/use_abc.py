@@ -4,7 +4,7 @@
 # @Author     : chenyao
 
 """
-借助collections模块实现抽象类
+借助abc模块实现抽象类
 """
 import abc
 
