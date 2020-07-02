@@ -67,12 +67,11 @@ class Eagle(Bird2Mixin, Fly, EatMeat):
 
 
 """
-多继承的时候形成一个继承链，通过super方法去不通的父类中寻找
+多继承的时候形成一个继承链，通过super方法去不同的父类中寻找
 """
 
 if __name__ == "__main__":
     s = Seagull()
     s.fly()
-
     e = Eagle()
     e.eat_meat()
