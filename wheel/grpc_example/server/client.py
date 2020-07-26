@@ -11,8 +11,7 @@ from __future__ import print_function
 import logging
 
 import grpc
-from grpc_example.protos import helloworld_pb2
-from grpc_example.protos import helloworld_pb2_grpc
+import helloworld_pb2, helloworld_pb2_grpc
 
 def run():
     with grpc.insecure_channel("127.0.0.1:50051") as channel:

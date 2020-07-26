@@ -10,14 +10,12 @@
 from concurrent import futures
 import logging
 import grpc
-
-
-from .service import helloworld
+import helloworld, helloworld_pb2_grpc
 
 def server():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     helloworld_pb2_grpc.add_GreeterServicer_to_server(helloworld.Greeter(), server)
-    server.add_insecure_port(':50051')
+    server.add_insecure_port('[::]:50051')
     server.start()
     server.wait_for_termination()
 

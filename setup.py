@@ -17,5 +17,6 @@ setup(
     zip_safe=False,
     install_requires=[
         'grpcio',
+        'fabric',
     ],
 )
