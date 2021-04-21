@@ -17,8 +17,9 @@ def serve():
     server.listen(1)
 
     epoll = select.epoll()
+    # epoll = select.kqueue()
     epoll.register(server.fileno(), select.EPOLLIN)
-    
+
     connections = {}
     contents = {}
 
@@ -33,7 +34,7 @@ def serve():
                 epoll.register(s.fileno(), select.EPOLLIN)
                 connections[s.fileno()] = s
             # 有数据可读
-            elif event = select.EPOLLIN:
+            elif event == select.EPOLLIN:
                 s = connections[fileno]
                 content = s.recv(1024)
                 # 关闭连接
@@ -47,7 +48,7 @@ def serve():
                     epoll.modify(fileno, select.EPOLLOUT)
                     contents[fileno] = content
             # 写事件就绪
-            elif event = select.EPOLLOUT:   
+            elif event == select.EPOLLOUT:   
                 try: # 捕获网络中断异常
                     content = contents[fileno]
                     s = connections[fileno]
